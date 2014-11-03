@@ -32,6 +32,7 @@ WebViewを使ってhtml+JavaScriptを使ってアプリを組みたい。
 配置したWebViewを使ってJavaからブラウザを操作する。
 
 ```java
+// MainActivity.java
 public class MainActivity extends Activity {
   @Override
   protected void onCreate(Bundle savedInstanceState) {
@@ -133,7 +134,7 @@ URLリクエストも横取りできる。
 
 * WebViewに対して [`setWebViewClient`](http://developer.android.com/intl/ja/reference/android/webkit/WebView.html#setWebViewClient(android.webkit.WebViewClient%29)
   で[`WebViewClient`](http://developer.android.com/intl/ja/reference/android/webkit/WebViewClient.html)
-  を登録できて、その[shouldOverrideUrlLoading](http://developer.android.com/intl/ja/reference/android/webkit/WebViewClient.html#shouldOverrideUrlLoading(android.webkit.WebView, java.lang.String%29)
+  を登録できて、その[`shouldOverrideUrlLoading`](http://developer.android.com/intl/ja/reference/android/webkit/WebViewClient.html#shouldOverrideUrlLoading(android.webkit.WebView, java.lang.String%29)
   でURLに対する処理を扱える
   * 横取りしてなにか処理した時には`true`を返す、そうでなくて通常の読み込みを継続する場合には
     `false`を返す
