@@ -45,7 +45,7 @@ public class MainActivity extends Activity {
 }
 ```
 
-* `findViewById`でWebViewを取得して、[`WebView#loadUrl`](http://developer.android.com/intl/ja/reference/android/webkit/WebView.html#loadUrl(java.lang.String%29)
+* `findViewById`でWebViewを取得して、[`WebView#loadUrl`](http://developer.android.com/intl/ja/reference/android/webkit/WebView.html#loadUrl(java.lang.String))
   でページの読み込みを指定できる
 * インターネットからウェブページを読み込むためにはAndroidManifest.xmlで`<uses-permission android:name="android.permission.INTERNET"/>`
   を指定して、アプリでのインターネット利用を有効にする必要がある
@@ -100,13 +100,13 @@ public class JavaScriptInterface {
 Native.showToast('PushMe clicked!');
 ```
 
-* [`WebView#addJavascriptInterface`](http://developer.android.com/intl/ja/reference/android/webkit/WebView.html#addJavascriptInterface(java.lang.Object, java.lang.String%29)
+* [`WebView#addJavascriptInterface`](http://developer.android.com/intl/ja/reference/android/webkit/WebView.html#addJavascriptInterface(java.lang.Object, java.lang.String))
   でインタフェースの登録
 * 登録したインタフェースのpublicメソッドをJavaScriptから呼び出せる
   * 型を自動的に変換してくれる、便利
 
 ### ネイティブ(Java)からJavaScriptを呼び出す
-[`WebView#loadUrl`](http://developer.android.com/intl/ja/reference/android/webkit/WebView.html#loadUrl(java.lang.String%29)を使用する：
+[`WebView#loadUrl`](http://developer.android.com/intl/ja/reference/android/webkit/WebView.html#loadUrl(java.lang.String))を使用する：
 
 ```java
 // Java
@@ -115,7 +115,7 @@ Native.showToast('PushMe clicked!');
 
 * JavaScriptのコードを表す文字列の前に`"javascript:"`を追加してやることでJavaScriptコード
   として解釈される
-* API level 19以降には[`WebView#evaluateJavascript`](http://developer.android.com/intl/ja/reference/android/webkit/WebView.html#evaluateJavascript(java.lang.String, android.webkit.ValueCallback<java.lang.String>%29)
+* API level 19以降には[`WebView#evaluateJavascript`](http://developer.android.com/intl/ja/reference/android/webkit/WebView.html#evaluateJavascript(java.lang.String, android.webkit.ValueCallback<java.lang.String>))
   というメソッドが追加されているらしい
 
 ## URLリクエストを横取りする
@@ -132,9 +132,9 @@ URLリクエストも横取りできる。
     });
 ```
 
-* WebViewに対して [`setWebViewClient`](http://developer.android.com/intl/ja/reference/android/webkit/WebView.html#setWebViewClient(android.webkit.WebViewClient%29)
+* WebViewに対して [`setWebViewClient`](http://developer.android.com/intl/ja/reference/android/webkit/WebView.html#setWebViewClient(android.webkit.WebViewClient))
   で[`WebViewClient`](http://developer.android.com/intl/ja/reference/android/webkit/WebViewClient.html)
-  を登録できて、その[`shouldOverrideUrlLoading`](http://developer.android.com/intl/ja/reference/android/webkit/WebViewClient.html#shouldOverrideUrlLoading(android.webkit.WebView, java.lang.String%29)
+  を登録できて、その[`shouldOverrideUrlLoading`](http://developer.android.com/intl/ja/reference/android/webkit/WebViewClient.html#shouldOverrideUrlLoading(android.webkit.WebView, java.lang.String))
   でURLに対する処理を扱える
   * 横取りしてなにか処理した時には`true`を返す、そうでなくて通常の読み込みを継続する場合には
     `false`を返す
