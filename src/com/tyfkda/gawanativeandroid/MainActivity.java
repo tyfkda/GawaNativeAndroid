@@ -12,6 +12,7 @@ public class MainActivity extends Activity {
     setContentView(R.layout.activity_main);
     
     WebView webView = (WebView) findViewById(R.id.webView);
+    webView.getSettings().setJavaScriptEnabled(true);
     webView.loadUrl("file:///android_asset/index.html");
   }
 }
