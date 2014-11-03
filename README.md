@@ -5,7 +5,7 @@ Androidでガワネイティブ
 WebViewを使ってhtml+JavaScriptを使ってアプリを組みたい。
 今回はAndroid, Javaで作ってみる。
 
-[コード](https://github.com/tyfkda/GawaNativeIos)
+[コード](https://github.com/tyfkda/GawaNativeAndroid)
 
 ## WebViewを全画面の大きさで配置する
 レイアウトのxmlで指定する
@@ -113,7 +113,7 @@ Native.showToast('PushMe clicked!');
     webView.loadUrl("javascript:" + script);
 ```
 
-* JavaScriptのコードを表す文字列の前に`javascript:`を追加してやることでJavaScriptコード
+* JavaScriptのコードを表す文字列の前に`"javascript:"`を追加してやることでJavaScriptコード
   として解釈される
 * API level 19以降には[`WebView#evaluateJavascript`](http://developer.android.com/intl/ja/reference/android/webkit/WebView.html#evaluateJavascript(java.lang.String, android.webkit.ValueCallback<java.lang.String>%29)
   というメソッドが追加されているらしい
