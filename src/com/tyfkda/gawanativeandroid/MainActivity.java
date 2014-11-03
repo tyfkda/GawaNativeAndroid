@@ -5,7 +5,6 @@ import android.os.Bundle;
 import android.webkit.WebView;
 
 public class MainActivity extends Activity {
-
   @Override
   protected void onCreate(Bundle savedInstanceState) {
     super.onCreate(savedInstanceState);
@@ -13,6 +12,7 @@ public class MainActivity extends Activity {
     
     WebView webView = (WebView) findViewById(R.id.webView);
     webView.getSettings().setJavaScriptEnabled(true);
+    webView.addJavascriptInterface(new JavaScriptInterface(this, webView), "Native");
     webView.loadUrl("file:///android_asset/index.html");
   }
 }
