@@ -19,7 +19,7 @@ public class JavaScriptInterface {
     evaluateJs("addTextNode('" + string + "')");
   }
 
-  private void evaluateJs(String string) {
-    webView.loadUrl("javascript:" + string);
+  private void evaluateJs(String script) {
+    webView.loadUrl("javascript:" + script);
   }
 }
