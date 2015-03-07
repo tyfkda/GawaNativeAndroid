@@ -15,7 +15,7 @@ public class MainActivity extends Activity {
     
     WebView webView = (WebView) findViewById(R.id.webView);
     webView.getSettings().setJavaScriptEnabled(true);
-    webView.addJavascriptInterface(new JavaScriptInterface(this, webView), "Native");
+    webView.addJavascriptInterface(new MyJavaScriptInterface(this, webView), "Native");
     webView.setWebViewClient(new WebViewClient() {
       @Override
       public boolean shouldOverrideUrlLoading(WebView view, String url) {

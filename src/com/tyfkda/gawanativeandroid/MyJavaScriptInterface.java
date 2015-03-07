@@ -4,11 +4,11 @@ import android.content.Context;
 import android.webkit.WebView;
 import android.widget.Toast;
 
-public class JavaScriptInterface {
+public class MyJavaScriptInterface {
   private Context context;
   private WebView webView;
   
-  public JavaScriptInterface(Context context, WebView webView) {
+  public MyJavaScriptInterface(Context context, WebView webView) {
     this.context = context;
     this.webView = webView;
   }
