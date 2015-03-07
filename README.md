@@ -82,6 +82,7 @@ public class MyJavaScriptInterface {
     this.webView = webView;
   }
 
+  @JavascriptInterface
   public void showToast(String string) {
     Toast.makeText(context, string, Toast.LENGTH_SHORT).show();
   }
@@ -107,6 +108,8 @@ Native.showToast('PushMe clicked!');
 * 登録したインタフェースのpublicメソッドをJavaScriptから呼び出せる
   * 型を自動的に変換してくれる、便利
   * セキュリティ的に、Jelly Bean以降は[JavascriptInterfaceアノテーション](http://developer.android.com/intl/ja/reference/android/webkit/JavascriptInterface.html)がついたpublicメソッドだけが呼び出せる。（[リファレンス](http://developer.android.com/intl/ja/reference/android/webkit/JavascriptInterface.html)を参照すること）
+  * それだとセキュリティ的に危険なので、[WebChromeClient#onJsAlert](http://developer.android.com/intl/ja/reference/android/webkit/WebChromeClient.html#onJsAlert(android.webkit.WebView, java.lang.String, java.lang.String, android.webkit.JsResult))を使う方法がよいらしい（[Android の WebView で addJavascriptInterface を使わず情報を渡す - Qiita](http://qiita.com/ka_/items/f8dcde7893f3a029f151)）
+
 
 ### ネイティブ(Java)からJavaScriptを呼び出す
 [`WebView#loadUrl`](http://developer.android.com/intl/ja/reference/android/webkit/WebView.html#loadUrl(java.lang.String))を使用する：
