@@ -70,21 +70,14 @@ html内で相対パスで書けばアセット内のファイルが自動的に�
 
 ## JavaScriptとネイティブの連携
 ### JavaScriptからネイティブ(Java)を呼び出す
-JavaScriptからネイティブに対してなにか起動するにはWebViewにインタフェース用のオブジェクトを
-登録してやる
+JavaScriptからネイティブに対してなにか起動するにはWebViewにインタフェース用のクラスを定義し
 
 ```java
-// Java
-    webView.addJavascriptInterface(new JavaScriptInterface(this, webView), "Native");
-```
-
-```java
-// JavaScriptInterface.java
-public class JavaScriptInterface {
+public class MyJavaScriptInterface {
   private Context context;
   private WebView webView;
 
-  public JavaScriptInterface(Context context, WebView webView) {
+  public MyJavaScriptInterface(Context context, WebView webView) {
     this.context = context;
     this.webView = webView;
   }
@@ -95,6 +88,15 @@ public class JavaScriptInterface {
 }
 ```
 
+オブジェクトを登録してやると
+
+```java
+// Java
+    webView.addJavascriptInterface(new MyJavaScriptInterface(this, webView), "Native");
+```
+
+JavaScriptから呼び出すことができる：
+
 ```js
 // JavaScript
 Native.showToast('PushMe clicked!');
@@ -104,19 +106,19 @@ Native.showToast('PushMe clicked!');
   でインタフェースの登録
 * 登録したインタフェースのpublicメソッドをJavaScriptから呼び出せる
   * 型を自動的に変換してくれる、便利
+  * セキュリティ的に、Jelly Bean以降は[JavascriptInterfaceアノテーション](http://developer.android.com/intl/ja/reference/android/webkit/JavascriptInterface.html)がついたpublicメソッドだけが呼び出せる。（[リファレンス](http://developer.android.com/intl/ja/reference/android/webkit/JavascriptInterface.html)を参照すること）
 
 ### ネイティブ(Java)からJavaScriptを呼び出す
 [`WebView#loadUrl`](http://developer.android.com/intl/ja/reference/android/webkit/WebView.html#loadUrl(java.lang.String))を使用する：
 
 ```java
 // Java
-    webView.loadUrl("javascript:" + script);
+    webView.evaluateJavascript("（Javascriptのコード）", null);
 ```
 
-* JavaScriptのコードを表す文字列の前に`"javascript:"`を追加してやることでJavaScriptコード
-  として解釈される
-* API level 19以降には[`WebView#evaluateJavascript`](http://developer.android.com/intl/ja/reference/android/webkit/WebView.html#evaluateJavascript(java.lang.String, android.webkit.ValueCallback<java.lang.String>))
-  というメソッドが追加されているらしい
+* [`WebView#evaluateJavascript`](http://developer.android.com/intl/ja/reference/android/webkit/WebView.html#evaluateJavascript(java.lang.String, android.webkit.ValueCallback<java.lang.String>))を使う
+  * 第二引数は結果受け取りコールバック
+* API level 19(KITKAT)より前の場合には上のメソッドがないので、JavaScriptのコードを表す文字列の前に`"javascript:"`を追加した内容をurlとして[loadUrl](http://developer.android.com/intl/ja/reference/android/webkit/WebView.html#loadUrl(java.lang.String))を呼び出すことでJavaScriptコードが実行される
 
 ## URLリクエストを横取りする
 Javaで登録したインタフェースのメソッドをJavaScriptから呼び出せるので、使うかどうかわからないけど、
