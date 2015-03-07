@@ -1,6 +1,7 @@
 package com.tyfkda.gawanativeandroid;
 
 import android.content.Context;
+import android.os.Build;
 import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.widget.Toast;
@@ -22,6 +23,9 @@ public class MyJavaScriptInterface {
   }
 
   private void evaluateJs(String script) {
-    webView.loadUrl("javascript:" + script);
+    if (Build.VERSION.SDK_INT >= Build.VERSION_CODES.KITKAT)
+      webView.evaluateJavascript(script, null);
+    else
+      webView.loadUrl("javascript:" + script);
   }
 }
