@@ -1,6 +1,7 @@
 package com.tyfkda.gawanativeandroid;
 
 import android.content.Context;
+import android.webkit.JavascriptInterface;
 import android.webkit.WebView;
 import android.widget.Toast;
 
@@ -13,6 +14,7 @@ public class MyJavaScriptInterface {
     this.webView = webView;
   }
 
+  @JavascriptInterface
   public void showToast(String string) {
     Toast.makeText(context, string, Toast.LENGTH_SHORT).show();
 
