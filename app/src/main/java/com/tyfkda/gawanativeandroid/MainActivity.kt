@@ -3,10 +3,10 @@ package com.tyfkda.gawanativeandroid
 import android.net.Uri
 import android.os.Build
 import android.os.Bundle
+import android.support.design.widget.FloatingActionButton
 import android.support.v7.app.AppCompatActivity
 import android.webkit.WebView
 import android.webkit.WebViewClient
-import android.widget.Button
 import android.widget.Toast
 
 class MainActivity : AppCompatActivity() {
@@ -27,8 +27,8 @@ class MainActivity : AppCompatActivity() {
     })
     webView.loadUrl("file:///android_asset/index.html")
 
-    val button = findViewById(R.id.button) as Button
-    button.setOnClickListener {
+    val fab = findViewById(R.id.fab) as FloatingActionButton
+    fab.setOnClickListener {
       evaluateJs(webView, "addTextNode('[Button clicked]')")
     }
   }
